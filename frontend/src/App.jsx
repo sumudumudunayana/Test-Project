@@ -10,17 +10,16 @@ function App() {
     price: "",
     quantity: "",
     supplierName: "",
-    productStatus: ""
+    productStatus: "",
   });
 
-  const API_URL = "http://localhost:5001/api/products";
+  const API_URL = "https://test-project-pwc4.onrender.com/api/products";
 
   const fetchProducts = async () => {
     const res = await axios.get(API_URL);
     setProducts(res.data);
   };
 
-  
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -28,7 +27,7 @@ function App() {
   const handleChange = (e) => {
     setForm({
       ...form,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -43,7 +42,7 @@ function App() {
       price: "",
       quantity: "",
       supplierName: "",
-      productStatus: ""
+      productStatus: "",
     });
 
     fetchProducts();
@@ -119,9 +118,7 @@ function App() {
           <p>Supplier: {product.supplierName}</p>
           <p>Status: {product.productStatus}</p>
 
-          <button onClick={() => handleDelete(product._id)}>
-            Delete
-          </button>
+          <button onClick={() => handleDelete(product._id)}>Delete</button>
         </div>
       ))}
     </div>

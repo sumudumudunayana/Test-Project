@@ -8,21 +8,21 @@ const productRoutes = require("./routes/productRoutes");
 const app = express();
 
 app.use(cors({
-  origin: "http://localhost:5174",
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
+  origin: "*"
 }));
 
 app.use(express.json());
 
 app.use("/api/products", productRoutes);
 
+const PORT = process.env.PORT || 5001;
+
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
     console.log("MongoDB Connected");
 
-    app.listen(5001, () => {
-        console.log("Server running on port 5001");
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
     });
 })
 .catch((err) => console.log(err));

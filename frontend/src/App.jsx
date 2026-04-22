@@ -20,6 +20,7 @@ function App() {
     setProducts(res.data);
   };
 
+  
   useEffect(() => {
     fetchProducts();
   }, []);
